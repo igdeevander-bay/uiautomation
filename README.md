@@ -1,56 +1,56 @@
 # SauceDemo UI Automation
 
-Browser-based automated coverage for the SauceDemo login and end-to-end checkout flow. The tests use Playwright Test and page objects. An ExtentReports 5 HTML report is generated after each run, with screenshots attached to the relevant test cases.
+Playwright tests for the SauceDemo login and checkout flow. Each run also creates an ExtentReports HTML report with screenshots from each stage.
 
 ## Requirements
 
 - Node.js 20 or newer
-- npm
 - Java 17 or newer
-- Chromium browser (installed by the setup command below)
+- npm
+- Chromium
 
 ## Setup
+
+Run these commands from the project directory:
 
 ```powershell
 npm ci
 npx playwright install chromium
 ```
 
-The Maven Wrapper downloads the configured Maven distribution and ExtentReports dependencies on the first test run.
+The Maven Wrapper downloads Maven and the ExtentReports dependencies on the first run.
 
 ## Run the tests
+
+Run the tests in a headless browser:
 
 ```powershell
 npm test
 ```
 
-Run with a visible browser:
+Run the tests with a visible browser:
 
 ```powershell
 npm run test:headed
 ```
 
-Regenerate the ExtentReports HTML report from the most recent test run:
+## View the reports
+
+Open `reports/extent-report.html` in a browser to view the ExtentReports report and screenshots.
+
+To regenerate the report without rerunning the tests:
 
 ```powershell
 npm run report
 ```
 
-Open `reports/extent-report.html` in a browser. The report includes login and checkout screenshots from `reports/extent-assets/`, including the product, cart, checkout information, order summary, and confirmation states. Playwright test results and failure traces are saved under `reports/test-results/`; the supplementary Playwright HTML report is at `reports/html-report/index.html`.
+Playwright's supplementary HTML report is available at `reports/html-report/index.html`. Test results and failure traces are stored in `reports/test-results/`.
 
-## Configuration
+## Automated test cases
 
-The suite defaults to the SauceDemo standard account and a sample checkout address. Override values with environment variables when needed:
+The test cases are implemented in [tests/saucedemo.test.js](tests/saucedemo.test.js):
 
-| Variable | Default |
-|---|---|
-| `BASE_URL` | `https://www.saucedemo.com` |
-| `SAUCEDEMO_USERNAME` | `standard_user` |
-| `SAUCEDEMO_PASSWORD` | `secret_sauce` |
-| `CHECKOUT_FIRST_NAME` | `QA` |
-| `CHECKOUT_LAST_NAME` | `Automation` |
-| `CHECKOUT_POSTAL_CODE` | `10001` |
+- `TC-LOGIN-001` logs in with `standard_user` and verifies the Products page.
+- `TC-CHECKOUT-001` adds Sauce Labs Onesie to the cart, completes checkout, verifies the $8.63 order total, and confirms the order.
 
-## Test cases
-
-See [test-cases/test-cases.md](test-cases/test-cases.md) for the documented scenarios and expected results.
+The test account defaults to `standard_user` with password `secret_sauce`. Checkout uses sample customer details.
