@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-10-31T12:22:28.488Z",
+  "tests": [
+    {
+      "title": "TC-LOGIN-001 | Standard user can log in successfully",
+      "status": "passed",
+      "duration": 5880,
+      "error": null,
+      "attachments": [
+        {
+          "name": "login-products-page",
+          "path": "extent-assets/TC-LOGIN-001-Standard-user-can-log-in-successfully-1.png"
+        }
+      ]
+    },
+    {
+      "title": "TC-CHECKOUT-001 | Standard user completes checkout for Sauce Labs Onesie",
+      "status": "passed",
+      "duration": 2668,
+      "error": null,
+      "attachments": [
+        {
+          "name": "product-added-to-cart",
+          "path": "extent-assets/TC-CHECKOUT-001-Standard-user-completes-checkout-for-Sauce-Labs-Onesie-1.png"
+        },
+        {
+          "name": "cart-item-verified",
+          "path": "extent-assets/TC-CHECKOUT-001-Standard-user-completes-checkout-for-Sauce-Labs-Onesie-2.png"
+        },
+        {
+          "name": "checkout-information",
+          "path": "extent-assets/TC-CHECKOUT-001-Standard-user-completes-checkout-for-Sauce-Labs-Onesie-3.png"
+        },
+        {
+          "name": "checkout-order-summary",
+          "path": "extent-assets/TC-CHECKOUT-001-Standard-user-completes-checkout-for-Sauce-Labs-Onesie-4.png"
+        },
+        {
+          "name": "checkout-completed",
+          "path": "extent-assets/TC-CHECKOUT-001-Standard-user-completes-checkout-for-Sauce-Labs-Onesie-5.png"
+        }
+      ]
+    }
+  ]
+}

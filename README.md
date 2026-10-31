@@ -1,11 +1,12 @@
 # SauceDemo UI Automation
 
-Browser-based automated coverage for the SauceDemo login and end-to-end checkout flow. The tests use Playwright Test and page objects. Each test produces a standalone HTML report, and checkout screenshots are attached to the report and saved with the test results.
+Browser-based automated coverage for the SauceDemo login and end-to-end checkout flow. The tests use Playwright Test and page objects. An ExtentReports 5 HTML report is generated after each run, with screenshots attached to the relevant test cases.
 
 ## Requirements
 
 - Node.js 20 or newer
 - npm
+- Java 17 or newer
 - Chromium browser (installed by the setup command below)
 
 ## Setup
@@ -14,6 +15,8 @@ Browser-based automated coverage for the SauceDemo login and end-to-end checkout
 npm ci
 npx playwright install chromium
 ```
+
+The Maven Wrapper downloads the configured Maven distribution and ExtentReports dependencies on the first test run.
 
 ## Run the tests
 
@@ -27,13 +30,13 @@ Run with a visible browser:
 npm run test:headed
 ```
 
-Open the latest HTML report:
+Regenerate the ExtentReports HTML report from the most recent test run:
 
 ```powershell
 npm run report
 ```
 
-The report is generated at `reports/html-report/index.html`. Test results, traces for failed tests, and screenshot evidence are saved under `reports/test-results/`. Screenshot attachments include the inventory, cart, checkout information, order summary, and order confirmation states.
+Open `reports/extent-report.html` in a browser. The report includes login and checkout screenshots from `reports/extent-assets/`, including the product, cart, checkout information, order summary, and confirmation states. Playwright test results and failure traces are saved under `reports/test-results/`; the supplementary Playwright HTML report is at `reports/html-report/index.html`.
 
 ## Configuration
 

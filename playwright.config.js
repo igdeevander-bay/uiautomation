@@ -8,7 +8,8 @@ module.exports = defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: [
     ['list'],
-    ['html', { outputFolder: 'reports/html-report', open: 'never' }]
+    ['html', { outputFolder: 'reports/html-report', open: 'never' }],
+    ['./reporters/extent-data-reporter.js']
   ],
   outputDir: 'reports/test-results',
   use: {

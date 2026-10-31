@@ -4,3 +4,4 @@ playwright/.auth/
 .env
 .DS_Store
 Thumbs.db
+reporting/target/
