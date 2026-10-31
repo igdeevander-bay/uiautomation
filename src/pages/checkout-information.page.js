@@ -7,10 +7,13 @@ class CheckoutInformationPage {
     this.continueButton = page.getByRole('button', { name: 'Continue' });
   }
 
-  async completeCustomerInformation(customer) {
+  async fillCustomerInformation(customer) {
     await this.firstNameInput.fill(customer.firstName);
     await this.lastNameInput.fill(customer.lastName);
     await this.postalCodeInput.fill(customer.postalCode);
+  }
+
+  async continueToOverview() {
     await this.continueButton.click();
   }
 }

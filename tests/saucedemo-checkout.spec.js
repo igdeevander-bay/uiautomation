@@ -59,13 +59,24 @@ test('TC-CHECKOUT-001 | Standard user completes checkout for Sauce Labs Onesie',
   });
   await captureEvidence(page, testInfo, 'cart-item-verified');
 
-  await test.step('Enter checkout information and continue', async () => {
+  await test.step('Open checkout information and verify the customer form', async () => {
     await cartPage.proceedToCheckout();
     await expect(page).toHaveURL(/checkout-step-one\.html$/);
-    await checkoutInformationPage.completeCustomerInformation(customer);
+    await expect(checkoutInformationPage.firstNameInput).toBeVisible();
+    await expect(checkoutInformationPage.lastNameInput).toBeVisible();
+    await expect(checkoutInformationPage.postalCodeInput).toBeVisible();
+  });
+
+  await test.step('Enter customer checkout information', async () => {
+    await checkoutInformationPage.fillCustomerInformation(customer);
+  });
+  await captureEvidence(page, testInfo, 'checkout-information');
+
+  await test.step('Continue to the order summary', async () => {
+    await checkoutInformationPage.continueToOverview();
     await expect(checkoutOverviewPage.heading).toBeVisible();
   });
-  await captureEvidence(page, testInfo, 'checkout-information-submitted');
+  await captureEvidence(page, testInfo, 'checkout-order-summary');
 
   await test.step('Verify the order summary before placing the order', async () => {
     await expect(checkoutOverviewPage.item(product.name)).toBeVisible();
@@ -75,7 +86,6 @@ test('TC-CHECKOUT-001 | Standard user completes checkout for Sauce Labs Onesie',
     await expect(checkoutOverviewPage.tax).toHaveText('Tax: $0.64');
     await expect(checkoutOverviewPage.total).toHaveText('Total: $8.63');
   });
-  await captureEvidence(page, testInfo, 'checkout-order-summary');
 
   await test.step('Finish checkout and verify order confirmation', async () => {
     await checkoutOverviewPage.finishCheckout();
