@@ -12,6 +12,7 @@ test('TC-LOGIN-001 | Standard user can log in successfully', async ({
     await loginPage.open();
     await expect(loginPage.loginButton).toBeVisible();
   });
+  await captureEvidence(page, testInfo, 'login-page');
 
   await test.step('Log in with the standard user account', async () => {
     await loginPage.login(credentials.username, credentials.password);

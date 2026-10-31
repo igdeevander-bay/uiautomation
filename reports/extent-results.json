@@ -1,22 +1,26 @@
 {
-  "generatedAt": "2026-10-31T12:22:28.488Z",
+  "generatedAt": "2026-10-31T12:25:34.715Z",
   "tests": [
     {
       "title": "TC-LOGIN-001 | Standard user can log in successfully",
       "status": "passed",
-      "duration": 5880,
+      "duration": 3554,
       "error": null,
       "attachments": [
         {
-          "name": "login-products-page",
+          "name": "login-page",
           "path": "extent-assets/TC-LOGIN-001-Standard-user-can-log-in-successfully-1.png"
+        },
+        {
+          "name": "login-products-page",
+          "path": "extent-assets/TC-LOGIN-001-Standard-user-can-log-in-successfully-2.png"
         }
       ]
     },
     {
       "title": "TC-CHECKOUT-001 | Standard user completes checkout for Sauce Labs Onesie",
       "status": "passed",
-      "duration": 2668,
+      "duration": 4400,
       "error": null,
       "attachments": [
         {
